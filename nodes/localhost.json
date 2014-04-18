@@ -1,5 +1,7 @@
 {
 	"run_list": [
 		"recipe[helloworld]"
-	]
+	],
+	"name": "localhost",
+	"chef_type": "node"
 }
