@@ -1,7 +1,1 @@
-{
-	"run_list": [
-		"recipe[helloworld]"
-	],
-	"name": "localhost",
-	"chef_type": "node"
-}
+{"chef_type": "node", "uptime": "04:48:49 up 1 day,  5:46,  3 users,  load average: 0.04, 0.03, 0.00", "name": "localhost", "run_list": ["recipe[helloworld]"], "last_cook": "2014-04-19 04:48:49"}

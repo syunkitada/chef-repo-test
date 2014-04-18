@@ -1,8 +1,1 @@
-{
-   "name": "192.168.254.129",
-   "chef_type": "node",
-   "run_list": [
-      "recipe[helloworld]"
-   ]
-}
-
+{"chef_type": "node", "uptime": "04:48:49 up 1 day,  5:46,  3 users,  load average: 0.04, 0.03, 0.00", "name": "192.168.254.129", "run_list": ["recipe[helloworld]"], "last_cook": "2014-04-19 04:48:49"}
