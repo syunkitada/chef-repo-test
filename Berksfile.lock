@@ -1,0 +1,12 @@
+{
+  "sources": {
+    "mysql": {
+      "locked_version": "5.1.8"
+    },
+    "getting-started": {
+      "locked_version": "0.4.0",
+      "git": "https://github.com/opscode-cookbooks/getting-started.git",
+      "ref": "ec6b8de327daa43403560a1204a2ac7645a3b959"
+    }
+  }
+}
