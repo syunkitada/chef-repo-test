@@ -16,7 +16,12 @@ chef_repo_path = complement_path(conf.chef_repo_path)
 nodes_path     = complement_path(conf.nodes_path)
 role_path      = complement_path(conf.roles_path)
 chef_rpm_path  = complement_path(conf.chef_rpm_path)
+log_dir_path   = complement_path(conf.log_dir_path)
 
+if not os.path.exists(log_dir_path):
+    make_log_dir = commands.getoutput('mkdir %s' % (log_dir_path))
+
+is_proxy = hasattr(conf, 'http_proxy') and conf.http_proxy != '' and hasattr(conf, 'https_proxy') and conf.http_proxy != ''
 
 @task
 def node(reg_host='*'):
@@ -25,8 +30,8 @@ def node(reg_host='*'):
     uptime = 'Uptime'
     last_cook = 'LastCook'
     run_list = 'RunList'
-    print '%(host)-30s%(uptime)-15s%(last_cook)-25s%(run_list)s' % locals()
-    print '----------------------------------------------------------------------------'
+    print '%(host)-40s%(uptime)-15s%(last_cook)-25s%(run_list)s' % locals()
+    print '-------------------------------------------------------------------------------------------'
     for host in hosts:
         path = '%s/%s.json' % (nodes_path, host)
         with open(path, 'r') as f:
@@ -39,7 +44,7 @@ def node(reg_host='*'):
             uptime = progs.group(1)
         last_cook = host_json.get('last_cook')
         run_list = host_json.get('run_list')
-        print '%(host)-30s%(uptime)-15s%(last_cook)-25s%(run_list)s' % locals()
+        print '%(host)-40s%(uptime)-15s%(last_cook)-25s%(run_list)s' % locals()
 
 @task
 def role(reg_role='*'):
@@ -48,23 +53,25 @@ def role(reg_role='*'):
 
 @task
 def cook(option=None):
-    if option and option == 'p' \
-            and hasattr(conf, 'http_proxy') and http_proxy != '' \
-            and hasattr(conf, 'https_proxy') and http_proxy != '':
-        with shell_env(PASSWORD=env.password,
-                http_proxy=conf.http_proxy, https_proxy=conf.http_proxy):
-            local('knife solo cook %s --sync-only --ssh-password $PASSWORD' % (env.host))
-            sudo('chef-solo -c chef-solo/solo.rb -j chef-solo/dna.json')
-    else:
-        with shell_env(PASSWORD=env.password):
-            local('knife solo cook %s --ssh-password $PASSWORD' % (env.host))
+    date = run('date +"%Y-%m-%d %I:%M:%S"')
+    with shell_env(PASSWORD=env.password):
+        local('knife solo cook %s --sync-only --ssh-password $PASSWORD' % (env.host))
+        with settings(warn_only=True):
+            if option and option == 'p' and is_proxy:
+                with shell_enb(http_proxy=conf.http_proxy, https_proxy=conf.http_proxy):
+                    chef_solo = sudo('chef-solo -c chef-solo/solo.rb -j chef-solo/dna.json')
+            else:
+                chef_solo = sudo('chef-solo -c chef-solo/solo.rb -j chef-solo/dna.json')
+
+            last_cook = '%s[%d]' % (date, chef_solo.return_code)
+            with open(os.path.join(log_dir_path, env.host), 'w') as f:
+                f.write(chef_solo)
 
     path = '%s/%s.json' % (nodes_path, env.host)
     with open(path, 'r') as f:
         host_json = json.load(f)
 
-    date = run('date +"%Y-%m-%d %I:%M:%S"')
-    host_json.update({'last_cook': date})
+    host_json.update({'last_cook': last_cook})
 
     uptime = run('uptime')
     host_json.update({'uptime': uptime})
@@ -73,13 +80,17 @@ def cook(option=None):
         json.dump(host_json, f)
 
 @task
-def prepare():
+def prepare(option=None):
     if hasattr(conf, 'chef_rpm_path') and chef_rpm_path != '':
         chef_rpm = 'tmp_chef.rpm'
         if os.path.exists(chef_rpm_path):
             local('scp %s %s:~/%s' % (chef_rpm_path, env.host, chef_rpm))
             with settings(ok_ret_codes=[0,1]):
-                sudo('yum install %s -y' % chef_rpm)
+                if option and option == 'p' and is_proxy:
+                    with shell_enb(http_proxy=conf.http_proxy, https_proxy=conf.http_proxy):
+                        sudo('yum install %s -y' % chef_rpm)
+                else:
+                    sudo('yum install %s -y' % chef_rpm)
                 run('rm -rf %s' % chef_rpm)
         else:
             print 'cannot access %s' % chef_rpm_path
@@ -106,6 +117,7 @@ def prepare():
 def h(*xargs):
     sudo('hostname')
     env.hosts = __get_hosts(xargs)
+    print env.hosts
 
 def __get_hosts(xargs):
     hosts = set()
