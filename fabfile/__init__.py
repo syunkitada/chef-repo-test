@@ -26,6 +26,9 @@ is_proxy = hasattr(conf, 'http_proxy') and conf.http_proxy != '' and hasattr(con
 @task
 def node(reg_host='*'):
     hosts = __get_hosts(reg_host)
+    if len(hosts):
+        print 'TODO print host info'
+
     host = 'HostName'
     uptime = 'Uptime'
     last_cook = 'LastCook'
@@ -58,7 +61,7 @@ def cook(option=None):
         local('knife solo cook %s --sync-only --ssh-password $PASSWORD' % (env.host))
         with settings(warn_only=True):
             if option and option == 'p' and is_proxy:
-                with shell_enb(http_proxy=conf.http_proxy, https_proxy=conf.http_proxy):
+                with shell_env(http_proxy=conf.http_proxy, https_proxy=conf.http_proxy):
                     chef_solo = sudo('chef-solo -c chef-solo/solo.rb -j chef-solo/dna.json')
             else:
                 chef_solo = sudo('chef-solo -c chef-solo/solo.rb -j chef-solo/dna.json')
@@ -114,15 +117,16 @@ def prepare(option=None):
 # cook prepareをする場合は必ず実行
 @task
 @hosts('localhost')
-def h(*xargs):
-    sudo('hostname')
-    env.hosts = __get_hosts(xargs)
+def h(reg_host):
+    env.hosts = __get_hosts(reg_host)
+    print 'set up targets'
     print env.hosts
+    print '\nis ok?\nif you ok, enter your password.\n'
+    sudo('hostname')
 
-def __get_hosts(xargs):
+def __get_hosts(reg_host):
     hosts = set()
     prog = re.compile('%s/(.*).json' % nodes_path)
-    for reg_host in xargs:
-        host_jsons = commands.getoutput('find %s/ -name %s.json' % (nodes_path, reg_host))
-        hosts.update(set(prog.findall(host_jsons)))
+    host_jsons = commands.getoutput('find %s/ -name %s.json' % (nodes_path, reg_host))
+    hosts.update(set(prog.findall(host_jsons)))
     return hosts
