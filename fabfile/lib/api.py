@@ -41,7 +41,7 @@ def local(cmd, **kwargs):
         return api.local(cmd, kwargs)
 
 def log(msg):
-    with open('%s/%s' % (conf.log_dir_path, api.env.host), 'a') as f:
+    with open('%s/%s.log' % (conf.log_dir_path, api.env.host), 'a') as f:
         f.write('%s: %s\n' % (util.get_timestamp(), msg))
 
 def test_cmd(cmd):
