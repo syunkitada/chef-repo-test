@@ -1,1 +1,1 @@
-{"uptime": "01:11:20 up 2 days, 35 min,  2 users,  load average: 0.09, 0.05, 0.01", "last_cook": "2014-04-20 17:35:44[0]", "run_list": "role[helloworld]"}
+{"uptime": "00:32:19 up 13:07,  3 users,  load average: 0.08, 0.02, 0.01", "last_cook": "2014-04-28 11:45:20[0]", "run_list": "role[helloworld]"}

@@ -6,9 +6,9 @@ import util, conf
 
 @task
 def role(role_pattern='*'):
-    re_name = re.compile('name +"(.*)"')
-    re_run_list = re.compile('run_list +"(.*)"')
-    re_run_list_following = re.compile('"(.*)"')
+    re_name = re.compile('name +[\'"](.*)[\'"]')
+    re_run_list = re.compile('run_list +[\'"](.*)[\'"]')
+    re_run_list_following = re.compile('[\'"](.*)[\'"]')
     re_run_list_end = re.compile('^[a-z].*')
     find = commands.getoutput('find %s/ -name %s.rb' % (conf.role_path, role_pattern))
     role_paths = find.split('\n')
@@ -47,7 +47,9 @@ def role(role_pattern='*'):
 
             role_info.update({'run_list': run_list})
 
-        print '%(name)-40s%(run_list)s' % role_info
+        print '%(name)-40s%(run_list)s' % {
+                'name': role_info.get('name'),
+                'run_list': role_info.get('run_list')}
         role_infos.append(role_info)
 
     return role_infos

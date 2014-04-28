@@ -8,9 +8,11 @@ class TestSequenceFunctions(unittest.TestCase):
         conf.init_test_conf()
         cook('p')
         cmd_history = [
-            'local> knife solo cook %s --sync-only --ssh-password $PASSWORD' % (env.host),
-            'sudo> chef-solo -c chef-solo/solo.rb -j chef-solo/dna.json',
-            'run> uptime'
+                    'run> rm -rf chef-solo',
+                    'local> scp ~/chef-solo.tar.gz %s:~/' % env.host,
+                    'run> tar -xvf chef-solo.tar.gz',
+                    'sudo> chef-solo -c chef-solo/solo.rb -j chef-solo/%s.json' % env.host,
+                    'run> uptime',
                 ]
         self.assertEqual(cmd_history, env.cmd_history)
         self.assertTrue(env.is_proxy)

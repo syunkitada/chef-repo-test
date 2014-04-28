@@ -3,6 +3,7 @@
 import os
 import ConfigParser
 from fabric.api import env
+import commands
 
 inifile = ConfigParser.SafeConfigParser()
 inifile_dir = os.path.join(os.path.dirname(__file__), '../../')
@@ -17,18 +18,30 @@ def complement_path(path):
     else:
         return os.path.join(inifile_dir, path)
 
+# common
 chef_repo_path = complement_path(inifile.get('common', 'chef_repo_path'))
+tmp_cookbooks_paths = inifile.get('common', 'cookbooks_paths')
+tmp_cookbooks_paths = tmp_cookbooks_paths.replace(' ', '').split(',')
+cookbooks_paths = []
+for path in tmp_cookbooks_paths:
+    cookbooks_paths.append(complement_path(path))
+
 node_path      = complement_path(inifile.get('common', 'node_path'))
 role_path      = complement_path(inifile.get('common', 'role_path'))
-chef_rpm_path  = complement_path(inifile.get('common', 'chef_rpm_path'))
-tmp_chef_rpm   = inifile.get('common', 'tmp_chef_rpm')
-log_dir_path   = complement_path(inifile.get('common', 'log_dir_path'))
 http_proxy     = inifile.get('common', 'http_proxy')
 https_proxy    = inifile.get('common', 'https_proxy')
+
+# chefric
+chefric_path       = inifile.get('chefric', 'chefric_path')
+log_dir_path       = os.path.join(chefric_path, inifile.get('chefric', 'chefric_log'))
+chef_rpm           = inifile.get('chefric', 'chef_rpm')
+chef_rpm_path      = os.path.join(chefric_path, chef_rpm)
+tmp_chef_rpm       = inifile.get('chefric', 'tmp_chef_rpm')
+
 template_json  = { 'run_list': [] }
 
 if not os.path.exists(log_dir_path):
-    commands.getoutput('mkdir %s' % (util.log_dir_path))
+    os.mkdir(log_dir_path)
 
 env.is_proxy = False
 def is_proxy(option=None):
@@ -55,6 +68,9 @@ def init_test_conf():
     node_path      = os.path.join(chef_repo_path, 'node')
     role_path      = os.path.join(chef_repo_path, 'role')
     chef_rpm_path  = os.path.join(chef_repo_path, 'test-chef.rpm')
-    log_dir_path   = os.path.join(chef_repo_path, 'log_dir')
+    log_dir_path   = '/tmp/chef-testlog'
     http_proxy     = 'test.proxy'
     https_proxy    = 'test.proxy'
+
+    if not os.path.exists(log_dir_path):
+        os.mkdir(log_dir_path)
