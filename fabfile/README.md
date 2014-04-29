@@ -1,4 +1,6 @@
-# fabfile for chef
+# chefric
+
+fabfile for chef
 
 ## TODO
 * taskごとにドキュメント用意する
