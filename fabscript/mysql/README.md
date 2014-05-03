@@ -17,3 +17,6 @@ Last_IO_Error: error connecting to master 'masterslave@192.168.254.129:3306' - r
 ネットワークの問題なので
 マスタのを見て確認
 /etc/iptables
+
+$ fab mysql.setdata mysql.setup_user mysql.dump_master mysql.setup_slave mysql.show_slave_status
+```
