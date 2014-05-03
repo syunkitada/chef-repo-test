@@ -4,3 +4,4 @@
 
 .chef/*.pem
 .chef/data_bag_key
+*.pyc
