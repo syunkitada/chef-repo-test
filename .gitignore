@@ -1,6 +1,7 @@
 /cookbooks/
 /dev-cookbooks/
 /fabfile/
+/fablib/
 
 .chef/*.pem
 .chef/data_bag_key

@@ -1,1 +1,1 @@
-{"uptime": "", "name": "test", "run_list": [], "ipaddress": "failed", "ip_address": "failed", "ssh": "failed"}
+{"uptime": "", "name": "test", "ipaddress": "failed", "ssh": "failed", "run_list": [], "ip_address": "failed"}

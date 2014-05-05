@@ -1,1 +1,1 @@
-{"uptime": "13:08:31 up  1:16,  2 users,  load average: 0.44, 0.11, 0.03", "name": "localhost", "ipaddress": "127.0.0.1", "last_cook": "2014-05-03 13:08:31[0]", "ssh": "success", "run_list": ["role[mysql]"], "ip_address": "127.0.0.1"}
+{"uptime": "16:55:50 up 2 days,  5:03,  2 users,  load average: 0.16, 0.05, 0.01", "name": "localhost", "ip_address": "127.0.0.1", "last_cook": "2014-05-03 13:08:31[0]", "ssh": "success", "run_list": ["role[mysql]"], "ipaddress": "192.168.254.129"}
