@@ -3,6 +3,6 @@
 /fabfile/
 /fablib/
 
-.chef/*.pem
+*.pem
 .chef/data_bag_key
 *.pyc
