@@ -1,10 +1,13 @@
 {
+    "fab_run_list": [], 
     "ipaddress": "192.168.254.131", 
+    "last_check": "2014-05-25 16:21:35", 
     "last_cook": "2014-05-06 05:41:29[0]", 
+    "last_fabcooks": "", 
     "name": "192.168.254.131", 
     "run_list": [
-        "role[mysql]"
+        "role[sensu]"
     ], 
     "ssh": "success", 
-    "uptime": "18:49:31 up 2 days, 18:07,  2 users,  load average: 0.00, 0.00, 0.00"
+    "uptime": "21:56:58 up 15:26,  2 users,  load average: 0.00, 0.00, 0.00"
 }

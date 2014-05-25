@@ -1,10 +1,19 @@
 {
+    "fab_run_list": [
+        "helloworld.hello", 
+        "role.helloworld.helloworld"
+    ], 
     "ipaddress": "192.168.254.129", 
-    "last_cook": "2014-05-03 13:08:31[0]", 
+    "last_check": "2014-05-25 16:21:35", 
+    "last_cook": "2014-05-18 11:45:33 [0]", 
+    "last_fabcooks": [
+        "2014-05-18 11:28:38 [helloworld.hello:0]", 
+        "2014-05-18 11:28:38 [role.helloworld.helloworld:None]"
+    ], 
     "name": "192.168.254.129", 
     "run_list": [
-        "role[mysql]"
+        "recipe[helloworld]"
     ], 
     "ssh": "success", 
-    "uptime": "06:02:32 up 2 days, 18:10,  2 users,  load average: 0.39, 0.12, 0.03"
+    "uptime": "16:21:35 up 15:26,  2 users,  load average: 0.14, 0.10, 0.05"
 }

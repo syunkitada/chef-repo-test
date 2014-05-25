@@ -9,3 +9,4 @@ def hello():
     run('hostname')
     run('echo helloworld')
 
+    return 0

@@ -1,0 +1,11 @@
+{
+    "fab_run_list": "", 
+    "ipaddress": "failed", 
+    "last_check": "2014-05-25 16:21:41", 
+    "last_cook": "", 
+    "last_fabcooks": [], 
+    "name": null, 
+    "run_list": [], 
+    "ssh": "failed", 
+    "uptime": ""
+}

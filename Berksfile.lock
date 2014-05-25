@@ -3,10 +3,70 @@
     "mysql": {
       "locked_version": "5.1.8"
     },
+    "sensu": {
+      "locked_version": "1.0.0"
+    },
+    "graphite": {
+      "locked_version": "0.4.8"
+    },
     "getting-started": {
       "locked_version": "0.4.0",
       "git": "https://github.com/opscode-cookbooks/getting-started.git",
       "ref": "ec6b8de327daa43403560a1204a2ac7645a3b959"
+    },
+    "apt": {
+      "locked_version": "2.4.0"
+    },
+    "yum": {
+      "locked_version": "3.2.0"
+    },
+    "windows": {
+      "locked_version": "1.31.0"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.6"
+    },
+    "rabbitmq": {
+      "locked_version": "3.2.2"
+    },
+    "erlang": {
+      "locked_version": "1.5.4"
+    },
+    "yum-epel": {
+      "locked_version": "0.3.6"
+    },
+    "yum-erlang_solutions": {
+      "locked_version": "0.2.0"
+    },
+    "build-essential": {
+      "locked_version": "2.0.2"
+    },
+    "redisio": {
+      "locked_version": "1.7.1"
+    },
+    "ulimit": {
+      "locked_version": "0.3.2"
+    },
+    "python": {
+      "locked_version": "1.4.6"
+    },
+    "apache2": {
+      "locked_version": "1.10.4"
+    },
+    "iptables": {
+      "locked_version": "0.13.2"
+    },
+    "logrotate": {
+      "locked_version": "1.5.0"
+    },
+    "pacman": {
+      "locked_version": "1.1.1"
+    },
+    "runit": {
+      "locked_version": "1.5.10"
+    },
+    "memcached": {
+      "locked_version": "1.7.2"
     }
   }
 }
