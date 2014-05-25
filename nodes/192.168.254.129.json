@@ -4,7 +4,7 @@
         "role.helloworld.helloworld"
     ], 
     "ipaddress": "192.168.254.129", 
-    "last_check": "2014-05-25 19:52:40", 
+    "last_check": "2014-05-25 20:21:37", 
     "last_cook": "2014-05-25 19:52:57 [0]", 
     "last_fabcooks": [
         "2014-05-25 20:13:30 [helloworld.hello:0]", 
@@ -15,5 +15,5 @@
         "recipe[helloworld]"
     ], 
     "ssh": "success", 
-    "uptime": "19:52:39 up 18:57,  2 users,  load average: 0.68, 0.20, 0.05"
+    "uptime": "20:21:37 up 19:26,  2 users,  load average: 0.28, 0.13, 0.04"
 }
