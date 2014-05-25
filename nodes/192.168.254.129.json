@@ -4,16 +4,16 @@
         "role.helloworld.helloworld"
     ], 
     "ipaddress": "192.168.254.129", 
-    "last_check": "2014-05-25 16:21:35", 
-    "last_cook": "2014-05-18 11:45:33 [0]", 
+    "last_check": "2014-05-25 19:52:40", 
+    "last_cook": "2014-05-25 19:52:57 [0]", 
     "last_fabcooks": [
-        "2014-05-18 11:28:38 [helloworld.hello:0]", 
-        "2014-05-18 11:28:38 [role.helloworld.helloworld:None]"
+        "2014-05-25 20:13:30 [helloworld.hello:0]", 
+        "2014-05-25 20:13:30 [role.helloworld.helloworld:0]"
     ], 
     "name": "192.168.254.129", 
     "run_list": [
         "recipe[helloworld]"
     ], 
     "ssh": "success", 
-    "uptime": "16:21:35 up 15:26,  2 users,  load average: 0.14, 0.10, 0.05"
+    "uptime": "19:52:39 up 18:57,  2 users,  load average: 0.68, 0.20, 0.05"
 }

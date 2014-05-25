@@ -1,11 +1,11 @@
 {
     "fab_run_list": [], 
     "ipaddress": "127.0.0.1", 
-    "last_check": "2014-05-25 16:21:33", 
-    "last_cook": "2014-05-03 13:08:31[0]", 
-    "last_fabcooks": "", 
+    "last_check": "2014-05-25 19:52:38", 
+    "last_cook": "2014-05-25 19:52:50 [0]", 
+    "last_fabcooks": [], 
     "name": "localhost", 
     "run_list": [], 
     "ssh": "success", 
-    "uptime": "16:21:33 up 15:26,  2 users,  load average: 0.14, 0.10, 0.05"
+    "uptime": "19:52:38 up 18:57,  2 users,  load average: 0.68, 0.20, 0.05"
 }
