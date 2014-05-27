@@ -1,8 +1,8 @@
 {
     "fab_run_list": [], 
     "ipaddress": "failed", 
-    "last_check": "2014-05-20 04:10:22", 
-    "last_cook": "2014-05-25 20:14:52 [0]", 
+    "last_check": "2014-05-27 03:10:08", 
+    "last_cook": "2014-05-27 03:10:06 [start]", 
     "last_fabcooks": [], 
     "name": "192.168.254.131", 
     "run_list": [

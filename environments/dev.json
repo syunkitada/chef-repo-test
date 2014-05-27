@@ -1,0 +1,20 @@
+{
+  "name": "dev",
+  "default_attributes": {
+    "apache2": {
+      "listen_ports": [
+        "80",
+        "443"
+      ]
+    }
+  },
+  "override_attributes": {
+  },
+  "json_class": "Chef::Environment",
+    "description": "",
+    "cookbook_versions": {
+    "couchdb": "= 11.0.0"
+  },
+  "chef_type": "environment"
+}
+
