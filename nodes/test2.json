@@ -2,6 +2,6 @@
     "chef_environment": "_default", 
     "data": {}, 
     "fab_run_list": [], 
-    "name": "localhost", 
+    "name": "test2", 
     "run_list": []
 }

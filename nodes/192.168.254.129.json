@@ -1,20 +1,12 @@
 {
     "chef_environment": "dev", 
+    "data": {}, 
     "fab_run_list": [
         "helloworld.hello", 
         "role.helloworld.helloworld"
     ], 
-    "ipaddress": "192.168.254.129", 
-    "last_check": "2014-05-27 08:18:32", 
-    "last_cook": "2014-05-27 08:18:38 [solo:0]", 
-    "last_fabcooks": [
-        "2014-05-25 20:13:30 [helloworld.hello:0]", 
-        "2014-05-25 20:13:30 [role.helloworld.helloworld:0]"
-    ], 
     "name": "192.168.254.129", 
     "run_list": [
         "recipe[helloworld]"
-    ], 
-    "ssh": "success", 
-    "uptime": "08:18:32 up  9:40,  2 users,  load average: 0.50, 0.15, 0.04"
+    ]
 }
