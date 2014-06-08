@@ -1,10 +1,7 @@
 {
     "chef_environment": "dev", 
     "data": {}, 
-    "fab_run_list": [
-        "helloworld.hello", 
-        "role.helloworld.helloworld"
-    ], 
+    "fab_run_list": [], 
     "name": "192.168.254.129", 
     "run_list": [
         "recipe[helloworld]"
