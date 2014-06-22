@@ -3,10 +3,16 @@ from fabric.api import env, task, hosts
 from api import *
 import util, conf
 
-@task
+@task(task_class=LogTask)
 @hosts('localhost')
 def hello():
-    run('hostname')
     run('echo helloworld')
+
+    return 0
+
+@task(task_class=LogTask)
+@hosts('localhost')
+def hello2():
+    run('echo helloworld22')
 
     return 0

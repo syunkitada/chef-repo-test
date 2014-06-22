@@ -1,0 +1,7 @@
+{
+    "chef_environment": "_default", 
+    "data": {}, 
+    "fab_run_list": [], 
+    "name": "test09540host", 
+    "run_list": []
+}

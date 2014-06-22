@@ -11,9 +11,9 @@ knife[:berkshelf_path] = "cookbooks"
 
 # for chef-server
 USER = ENV["USER"]
-PWD = ENV["PWD"]
+HOME = ENV["HOME"]
 node_name        USER
 chef_server_url  "https://192.168.254.129"
-client_key       "#{PWD}/.chef/#{USER}.pem"
-validation_key   "#{PWD}/.chef/chef-validator.pem"
+client_key       "#{HOME}/.chef/#{USER}.pem"
+validation_key   "#{HOME}/.chef/chef-validator.pem"
 
